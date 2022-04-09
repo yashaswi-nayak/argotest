@@ -25,3 +25,5 @@ spec:
           name: argotest
           ports:
             - containerPort: 5000
+      imagePullSecrets:
+        - name: regcred
