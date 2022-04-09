@@ -21,7 +21,7 @@ spec:
       namespace: argo-space
     spec:
       containers:
-        - image: yashdock90/argotest:v1
+        - image: yashdock90/argotest-flask:v1
           name: argotest
           ports:
             - containerPort: 5000
