@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: argotest
-          image: yashdock90/argotest-flask:v1
+          image: yashdock90/argotest-flask:v2
           imagePullPolicy: Always
           ports:
             - name: tcp
