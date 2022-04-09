@@ -14,16 +14,10 @@ spec:
     spec:
       containers:
         - name: argotest
-          image: yashdock90/argotest-flask:v1
+          image: yashdock90/argotest-flask:v2
           ports:
             - name: tcp
               containerPort: 5000
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: liveness-port
-            failureThreshold: 1
-            periodSeconds: 60
   minReadySeconds: 30
   revisionHistoryLimit: 3
   strategy:
