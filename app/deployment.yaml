@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  version: v1
   labels:
     app: argo-app
+    version: v1
   name: argo-app
   namespace: argo-space
 spec:
@@ -14,9 +14,9 @@ spec:
   strategy: {}
   template:
     metadata:
-      version: "v1"
       labels:
         app: argo-app
+        version: v1
       name: argo-app
       namespace: argo-space
     spec:
