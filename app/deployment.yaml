@@ -23,4 +23,4 @@ spec:
       containers:
         - image: yashdock90/argotest:v1
           name: argotest
-      imagePullPolicy: IfNotPresent
+    imagePullPolicy: IfNotPresent
