@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v1
+apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: app-rollout
@@ -16,9 +16,6 @@ spec:
         - name: argotest
           image: yashdock90/argotest-flask:v1
           ports:
-            - name: liveness-port
-              containerPort: 5000
-              hostPort: 5000
             - name: tcp
               containerPort: 5000
           livenessProbe:
