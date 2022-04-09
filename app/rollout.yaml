@@ -20,6 +20,7 @@ spec:
           ports:
             - name: tcp
               containerPort: 5000
+      imagePullPolicy: Always
   minReadySeconds: 30
   revisionHistoryLimit: 3
   strategy:
