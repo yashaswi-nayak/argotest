@@ -25,4 +25,3 @@ spec:
           name: argotest
           ports:
             - containerPort: 5000
-      imagePullPolicy: IfNotPresent
