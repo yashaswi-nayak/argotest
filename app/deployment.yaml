@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  version: v1
+  labels:
+    app: argo-app
+  name: argo-app
+  namespace: argo-space
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argo-app
+  strategy: {}
+  template:
+    metadata:
+      version: "v1"
+      labels:
+        app: argo-app
+      name: argo-app
+      namespace: argo-space
+    spec:
+      containers:
+        - image: yashdock90/argotest:v1
+          name: argotest
+      imagePullPolicy: IfNotPresent
