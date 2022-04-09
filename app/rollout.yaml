@@ -1,28 +1,20 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
-  labels:
-    app: argo-app
-    version: v1
-  name: argo-app
-  namespace: argo-space
+  name: app-rollout
 spec:
-  replicas: 1
+  replicas: 10
   selector:
     matchLabels:
       app: argo-app
-  strategy: {}
   template:
     metadata:
       labels:
         app: argo-app
-        version: v1
-      name: argo-app
-      namespace: argo-space
     spec:
       containers:
-        - image: yashdock90/argotest-flask:v1
-          name: argotest
+        - name: argotest
+          image: yashdock90/argotest-flask:v1
           ports:
             - name: liveness-port
               containerPort: 5000
@@ -35,5 +27,15 @@ spec:
               port: liveness-port
             failureThreshold: 1
             periodSeconds: 60
-      imagePullSecrets:
-        - name: regcred
+  minReadySeconds: 30
+  revisionHistoryLimit: 3
+  strategy:
+    canary: #Indicates that the rollout should use the Canary strategy
+      maxSurge: "25%"
+      maxUnavailable: 0
+      steps:
+        - setWeight: 10
+        - pause:
+            duration: 1h # 1 hour
+        - setWeight: 20
+        - pause: {} # pause indefinitely
